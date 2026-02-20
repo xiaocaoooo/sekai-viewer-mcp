@@ -4,6 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build:bundle": "esbuild src/index.ts --bundle --platform=node --minify --target=node22 --outfile=dist/bundle.js",
+    "build:sea": "node --experimental-sea-config sea-config.json",
+    "build:inject": "cp $(which node) ./node-sea && postject ./node-sea NODE_SEA_BLOB dist/sea-prep.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc463b6086147e454178b0aa6462688",
+    "docker:build": "docker build -t sekai-viewer-mcp-sea .",
     "build": "tsc",
     "start": "node dist/index.js",
     "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",

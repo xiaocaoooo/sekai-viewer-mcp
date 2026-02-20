@@ -14,6 +14,11 @@ app.use(cors());
 // Store transports to handle POST messages
 const transports = new Map<string, SSEServerTransport>();
 
+// Health check endpoint
+app.get('/health', (_req, res) => {
+  res.json({ status: 'ok' });
+});
+
 app.get('/sse', async (_req, res) => {
   console.log('New SSE connection');
 
